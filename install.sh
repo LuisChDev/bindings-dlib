@@ -16,15 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Builds and installs the Hoppy example project.
+# Builds and installs the Hoppy bindings-dlib project.
 
 set -euo pipefail
 
 if [[ $# -ne 0 ]]; then
     cat <<EOF
-install.sh - Hoppy example build script
+install.sh - Hoppy bindings-dlib build script
 
-Builds the Hoppy example project, runs tests, and installs it into the
+Builds the Hoppy bindings-dlib project, runs tests, and installs it into the
 local Cabal database.  Hoppy must already be installed.
 EOF
 
@@ -39,17 +39,17 @@ myDir=$(readlink -f "$0")
 myDir=$(dirname "$myDir")
 set -x
 
-cd "$myDir/example-generator"
+cd "$myDir/bindings-dlib-generator"
 cabal configure --ghc-options=-Werror
 cabal build
 # cabal install --force-reinstalls
 
-cd "$myDir/example-cpp"
+cd "$myDir/bindings-dlib-cpp"
 cabal configure --ghc-options=-Werror
 cabal build
 # cabal install --force-reinstalls
 
-cd "$myDir/example"
+cd "$myDir/bindings-dlib"
 cabal configure --ghc-options=-Werror --enable-tests
 cabal build
 cabal test

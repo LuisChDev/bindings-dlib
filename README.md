@@ -1,9 +1,11 @@
-# Hoppy example program
+# bindings-dlib
+
+This library exposes bindings to the `dlib` C++ library.
 
 This is a small project that demonstrates use of Hoppy in interfacing with C++
-code.  `example-cpp/cpp/utils.cpp` contains a function that reverses a string.
-`example-generator` defines a Hoppy generator for it, and `example-cpp` and
-`example` are the C++ and Haskell sides of the bindings, respectively.
+code.  `bindings-dlib-cpp/cpp/utils.cpp` contains a function that reverses a string.
+`bindings-dlib-generator` defines a Hoppy generator for it, and `bindings-dlib-cpp` and
+`bindings-dlib` are the C++ and Haskell sides of the bindings, respectively.
 
 Run `install.sh` to build, test, and install each of these in turn.  `clean.sh`
 removes build outputs.

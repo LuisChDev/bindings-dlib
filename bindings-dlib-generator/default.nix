@@ -14,17 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-{ mkDerivation, base, Cabal, hoppy-example-generator, hoppy-runtime, lib
+{ mkDerivation, base, hoppy-generator, hoppy-std, lib
 }:
 mkDerivation {
-  pname = "hoppy-example-cpp";
+  pname = "bindings-dlib-generator";
   version = "0.1.0";
   src = ./.;
-  setupHaskellDepends = [
-    base Cabal hoppy-example-generator hoppy-runtime
-  ];
-  libraryHaskellDepends = [
-    base hoppy-runtime
-  ];
+  isLibrary = true;
+  isExecutable = true;
+  libraryHaskellDepends = [ base hoppy-generator hoppy-std ];
+  executableHaskellDepends = [ base hoppy-generator ];
+  doHaddock = false;
   license = lib.licenses.asl20;
 }

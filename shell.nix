@@ -3,9 +3,9 @@
 
 (import ./. {}).shellFor {
   packages = p: [
-    p.hoppy-example-generator
-    p.hoppy-example-cpp
-    p.hoppy-example
+    p.bindings-dlib-generator
+    p.bindings-dlib-cpp
+    p.bindings-dlib
   ];
   withHoogle = true;
   buildInputs = with pkgs; [
@@ -14,16 +14,3 @@
     niv
   ];
 }
-
-# pkgs.mkShell {
-#   buildInputs = with pkgs; [
-#     cabal-install
-#     haskellPackages.haskell-language-server
-
-#     (ghc.withPackages (ps: with ps; [
-#       hoppy-generator
-#       hoppy-std
-#       hoppy-runtime
-#     ]))
-#   ];
-# }

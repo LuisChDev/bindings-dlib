@@ -1,25 +1,25 @@
 cradle:
   multi:
-    - path: "./example-generator"
+    - path: "./bindings-dlib-generator"
       config:
         cradle:
           cabal:
-            - path: "./example-generator/src"
-              component: "lib:hoppy-example-generator"
-            - path: "./example-generator/src-exe"
-              component: "exe:hoppy-example-generator"
-    - path: "./example-cpp"
+            - path: "./bindings-dlib-generator/src"
+              component: "lib:bindings-dlib-generator"
+            - path: "./bindings-dlib-generator/src-exe"
+              component: "exe:bindings-dlib-generator"
+    - path: "./bindings-dlib-cpp"
       config:
         cradle:
           cabal:
-            component: "lib:hoppy-example-cpp"
-    - path: "./example"
+            component: "lib:bindings-dlib-cpp"
+    - path: "./bindings-dlib"
       config:
         cradle:
           cabal:
-            - path: "./example/src"
-              component: "lib:hoppy-example"
-            - path: "./example/src-exe"
-              component: "exe:hoppy-example"
-            - path: "./example/tests"
-              component: "test:hoppy-example-tests"
+            - path: "./bindings-dlib/src"
+              component: "lib:bindings-dlib"
+            - path: "./bindings-dlib/src-exe"
+              component: "exe:bindings-dlib"
+            - path: "./bindings-dlib/tests"
+              component: "test:bindings-dlib-tests"

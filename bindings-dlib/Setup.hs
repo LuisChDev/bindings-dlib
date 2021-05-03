@@ -16,14 +16,14 @@
 
 module Main (main) where
 
-import Foreign.Hoppy.Setup (ProjectConfig (..), cppMain)
+import Foreign.Hoppy.Setup (ProjectConfig (..), hsMain)
 import qualified Foreign.Hoppy.Example.Generator as Generator
 
 main =
-  cppMain
+  hsMain
   ProjectConfig
   { interfaceResult = Generator.interfaceResult
-  , cppPackageName = "hoppy-example-cpp"
+  , cppPackageName = "bindings-dlib-cpp"
   , cppSourcesDir = "cpp"
   , hsSourcesDir = "src"
   }

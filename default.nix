@@ -5,14 +5,8 @@
 pkgs.haskellPackages.override (old: {
   overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
     (self: super: with pkgs.haskellPackages; {
-      hoppy-example-generator = callPackage ./example-generator {};
-      hoppy-example-cpp = callPackage ./example-cpp { inherit (self) hoppy-example-generator; };
-      hoppy-example = callPackage ./example { inherit (self) hoppy-example-cpp hoppy-example-generator; };
+      bindings-dlib-generator = callPackage ./bindings-dlib-generator {};
+      bindings-dlib-cpp = callPackage ./bindings-dlib-cpp { inherit (self) bindings-dlib-generator; };
+      bindings-dlib = callPackage ./bindings-dlib { inherit (self) bindings-dlib-cpp bindings-dlib-generator; };
     });
 })
-
-# pkgs.haskellPackages.extend (pkgs.haskell.lib.packageSourceOverrides {
-#   hoppy-example = ./example;
-#   hoppy-example-cpp = ./example-cpp;
-#   hoppy-example-generator = ./example-generator;
-# })

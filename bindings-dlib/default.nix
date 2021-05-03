@@ -26,20 +26,20 @@
 #   doing "ghc-options: -dynamic", but this isn't detected by cabal2nix, so we
 #   have to add it ourselves.
 
-{ mkDerivation, base, Cabal, hoppy-example-cpp
-, hoppy-example-generator, hoppy-runtime, HUnit, lib
+{ mkDerivation, base, Cabal, bindings-dlib-cpp
+, bindings-dlib-generator, hoppy-runtime, HUnit, lib
 }:
 mkDerivation {
-  pname = "hoppy-example";
+  pname = "bindings-dlib";
   version = "0.1.0";
   src = ./.;
   isLibrary = true;
   isExecutable = true;
   setupHaskellDepends = [
-    base Cabal hoppy-example-generator hoppy-runtime
+    base Cabal bindings-dlib-generator hoppy-runtime
   ];
   libraryHaskellDepends = [
-    base hoppy-example-cpp hoppy-runtime
+    base bindings-dlib-cpp hoppy-runtime
   ];
   # librarySystemDepends = [ example ];  (We don't want this.)
   executableHaskellDepends = [ base ];
