@@ -1,0 +1,25 @@
+cradle:
+  multi:
+    - path: "./example-generator"
+      config:
+        cradle:
+          cabal:
+            - path: "./example-generator/src"
+              component: "lib:hoppy-example-generator"
+            - path: "./example-generator/src-exe"
+              component: "exe:hoppy-example-generator"
+    - path: "./example-cpp"
+      config:
+        cradle:
+          cabal:
+            component: "lib:hoppy-example-cpp"
+    - path: "./example"
+      config:
+        cradle:
+          cabal:
+            - path: "./example/src"
+              component: "lib:hoppy-example"
+            - path: "./example/src-exe"
+              component: "exe:hoppy-example"
+            - path: "./example/tests"
+              component: "test:hoppy-example-tests"
