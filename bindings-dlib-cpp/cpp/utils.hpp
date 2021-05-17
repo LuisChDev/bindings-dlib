@@ -21,4 +21,6 @@
 
 std::string reverse(const std::string& str);
 
+int plusTwo(int& numero);
+
 #endif

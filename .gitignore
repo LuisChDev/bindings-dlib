@@ -1,3 +1,6 @@
+.ccls-cache
+.envrc
+
 dist
 dist-*
 **/dist-*
@@ -19,6 +22,9 @@ cabal.sandbox.config
 *.eventlog
 .stack-work/
 cabal.project.local
-cabal.project.local~
+cabal.project.local~*
 .HTF/
 .ghc.environment.*
+
+# specific for this project
+bindings-dlib-exe

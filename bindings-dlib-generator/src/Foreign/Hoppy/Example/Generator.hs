@@ -20,7 +20,7 @@ import Foreign.Hoppy.Generator.Spec (
   Function,
   Interface,
   Module,
-  Purity (Nonpure),
+  Purity (Nonpure, Pure),
   addReqIncludes,
   ident,
   includeLocal,
@@ -32,10 +32,10 @@ import Foreign.Hoppy.Generator.Spec (
   moduleModify',
   moduleSetCppPath,
   moduleSetHppPath,
-  toExport,
+  toExport, ident1, toExtName
   )
 import Foreign.Hoppy.Generator.Std (c_string, mod_std)
-import Foreign.Hoppy.Generator.Types (objT)
+import Foreign.Hoppy.Generator.Types (objT, intT, ulongT)
 
 interfaceResult :: Either String Interface
 interfaceResult = do
@@ -50,9 +50,18 @@ interfaceResult = do
 mod_example :: Module
 mod_example =
   moduleModify' (makeModule "utils" "gen_utils.hpp" "gen_utils.cpp") $
-  moduleAddExports [toExport f_reverse]
+  moduleAddExports [toExport f_reverse, toExport f_plusTwo, toExport f_square_root]
 
 f_reverse :: Function
 f_reverse =
   addReqIncludes [includeLocal "utils.hpp"] $
   makeFn (ident "reverse") Nothing Nonpure [objT c_string] $ objT c_string
+
+f_plusTwo :: Function
+f_plusTwo = addReqIncludes [includeLocal "utils.hpp"] $
+  makeFn (ident "plusTwo") Nothing Pure [intT] intT
+
+-- dlib function test
+f_square_root :: Function
+f_square_root = addReqIncludes [includeLocal "dlib_bindings.hpp"] $
+  makeFn (ident1 "dlib" "square_root") (Just $ toExtName "squareRoot") Pure [ulongT] ulongT

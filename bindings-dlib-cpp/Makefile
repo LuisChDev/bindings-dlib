@@ -25,12 +25,15 @@ CFLAGS = -O2
 
 all: cpp/libexample.so
 
-cpp/libexample.so: cpp/utils.o cpp/gen_utils.o cpp/gen_std.o
+cpp/libexample.so: cpp/utils.o cpp/gen_utils.o cpp/gen_std.o cpp/dlib.o
 ifeq ($(OS),darwin)
 	$(CC) $(CFLAGS) -dynamic -shared -fPIC -install_name @rpath/libexample.so -o $@ $^
 else
 	$(CC) $(CFLAGS) -dynamic -shared -fPIC -o $@ $^
 endif
+
+cpp/dlib.o: cpp/dlib_bindings.cpp
+	$(CC) $(NIX_CFLAGS_COMPILE) -fPIC -c $< -o $@
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -fPIC -c -o $@ $<

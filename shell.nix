@@ -11,6 +11,8 @@
   buildInputs = with pkgs; [
     haskellPackages.haskell-language-server
     cabal-install
+    ccls
     niv
+    dlib
   ];
 }

@@ -38,11 +38,11 @@ myDir=$(readlink -f "$0")
 myDir=$(dirname "$myDir")
 set -x
 
-cd "$myDir/example-generator"
+cd "$myDir/bindings-dlib-generator"
 cabal clean
 
-cd "$myDir/example-cpp"
+cd "$myDir/bindings-dlib-cpp"
 cabal clean
 
-cd "$myDir/example"
+cd "$myDir/bindings-dlib"
 cabal clean

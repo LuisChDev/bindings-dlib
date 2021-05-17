@@ -18,8 +18,11 @@ module Main (main) where
 
 -- This import is needed to bring in "instance StdStringValue String".
 import Foreign.Hoppy.Example.Std ()
-import Foreign.Hoppy.Example.Utils (reverse)
+import Foreign.Hoppy.Example.Utils (reverse, plusTwo, squareRoot)
 import Prelude hiding (reverse)
 
 main :: IO ()
-main = putStr . unlines =<< mapM reverse . lines =<< getContents
+main = do
+  putStr . unlines =<< mapM reverse . lines =<< getContents
+  putStrLn $ "\n " <> show (plusTwo 4)
+  putStrLn $ show (squareRoot 100)
